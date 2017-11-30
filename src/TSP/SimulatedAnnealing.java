@@ -9,6 +9,7 @@ public class SimulatedAnnealing {
             return 1.0;
         }
         // If the new solution is worse, calculate an acceptance probability
+        System.out.println("Probability: " + Math.exp((fitness - newFitness) / temperature));
         return Math.exp((fitness - newFitness) / temperature);
     }
 
@@ -55,7 +56,6 @@ public class SimulatedAnnealing {
             int currentFitness = currentSolution.getDistance();
             int neighbourFitness = newSolution.getDistance();
 
-            // Decide if we should accept the neighbour
             if (acceptanceProbability(currentFitness, neighbourFitness, temp) > Math.random()) {
                 currentSolution = new Tour(newSolution.getTour());
             }
@@ -66,8 +66,9 @@ public class SimulatedAnnealing {
                 System.out.println("Between solution distance:" + best.getDistance());
             }
 
-            // Cool system
+            // Cooldown
             temp *= 1-coolingRate;
+            System.out.println("Temperatur:" + temp);
         }
 
         System.out.println("Final solution distance: " + best.getDistance());

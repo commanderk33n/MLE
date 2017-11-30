@@ -19,7 +19,7 @@ public class HillClimber {
         Tour best = new Tour(currentSolution.getTour());
 
 
-        for (int i = 0; i < 100; i++){
+        for (int i = 0; i < 100000; i++){
             // Create new neighbour tour
             Tour newSolution = new Tour(currentSolution.getTour());
 
